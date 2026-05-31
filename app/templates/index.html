@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Docker CI/CD Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
+        .info-box label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .info-box value {
+            color: #667eea;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .status-indicator {
+            width: 20px;
+            height: 20px;
+            background: #4CAF50;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .features {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .features li {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #f0f4ff;
+            border-radius: 5px;
+            color: #333;
+        }
+        
+        .features li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #999;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Azure Docker CI/CD Pipeline</h1>
+        <p class="subtitle">Containerized Application Demo</p>
+        
+        <div class="status">
+            <div class="status-indicator"></div>
+            <span style="color: #4CAF50; font-weight: bold;">Application Running</span>
+        </div>
+        
+        <div class="info-box">
+            <label>Container Hostname:</label>
+            <value>{{ hostname }}</value>
+        </div>
+        
+        <div class="info-box">
+            <label>Current Timestamp:</label>
+            <value>{{ timestamp }}</value>
+        </div>
+        
+        <h3 style="color: #333; margin: 30px 0 15px 0;">CI/CD Pipeline Features</h3>
+        <ul class="features">
+            <li>GitHub Actions Automation</li>
+            <li>Docker Containerization</li>
+            <li>Azure Container Registry (ACR)</li>
+            <li>Azure Web App Deployment</li>
+            <li>Continuous Integration</li>
+            <li>Continuous Deployment</li>
+        </ul>
+        
+        <h3 style="color: #333; margin: 30px 0 15px 0;">Workflow Steps</h3>
+        <ul class="features">
+            <li>1. Developer pushes code to GitHub</li>
+            <li>2. GitHub Actions builds Docker image</li>
+            <li>3. Image pushed to Azure Container Registry</li>
+            <li>4. Azure Web App pulls and deploys image</li>
+            <li>5. Application automatically updated</li>
+        </ul>
+        
+        <div class="footer">
+            <p>Azure Docker CI/CD Learning Project v1.0</p>
+            <p>Running in container environment</p>
+        </div>
+    </div>
+</body>
+</html>

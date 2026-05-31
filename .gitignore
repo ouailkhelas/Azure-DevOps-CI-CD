@@ -1,0 +1,82 @@
+# Docker
+*.docker
+.docker
+docker-compose.override.yml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+secrets/
+credentials/
+
+# Azure
+.azure/
+*.publishsettings
+
+# GitHub
+.github/workflows/*.log
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+
+# Logs
+*.log
+logs/
+
+# Build artifacts
+dist/
+build/
+*.tar.gz
+*.zip
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node (if using npm)
+node_modules/
+package-lock.json
+
+# Misc
+.DS_Store
+.AppleDouble
+.LSOverride
