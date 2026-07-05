@@ -1,5 +1,4 @@
 name: Docker CI/CD Pipeline
-
 on:
   push:
     branches:
@@ -19,15 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      # Step 1: Checkout code
       - name: Checkout repository
         uses: actions/checkout@v3
       
-      # Step 2: Set up Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       
-      # Step 3: Log in to Azure Container Registry
       - name: Login to ACR
         uses: azure/docker-login@v1
         with:
@@ -35,7 +31,6 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       
-      # Step 4: Build and push Docker image
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
@@ -47,7 +42,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       
-      # Step 5: Logout from ACR
       - name: Logout from ACR
         run: docker logout ${{ env.REGISTRY }}
 
@@ -56,30 +50,25 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      # Step 1: Checkout code
       - name: Checkout repository
         uses: actions/checkout@v3
       
-      # Step 2: Azure Login
       - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       
-      # Step 3: Deploy to Azure Web App
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.WEBAPP_NAME }}
           images: ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
       
-      # Step 4: Verify deployment
       - name: Verify deployment
         run: |
           echo "Deployment completed successfully"
           echo "App URL: https://${{ secrets.WEBAPP_NAME }}.azurewebsites.net"
       
-      # Step 5: Azure Logout
       - name: Azure Logout
         run: az logout
 
@@ -91,10 +80,10 @@ jobs:
     steps:
       - name: Deployment Status
         run: |
-          echo "✅ Build Status: ${{ needs.build-and-push.result }}"
-          echo "✅ Deploy Status: ${{ needs.deploy.result }}"
+          echo "Build Status: ${{ needs.build-and-push.result }}"
+          echo "Deploy Status: ${{ needs.deploy.result }}"
           if [ "${{ needs.build-and-push.result }}" = "success" ] && [ "${{ needs.deploy.result }}" = "success" ]; then
-            echo "🎉 Pipeline completed successfully!"
+            echo "Pipeline completed successfully!"
           else
             echo "❌ Pipeline encountered issues"
             exit 1
