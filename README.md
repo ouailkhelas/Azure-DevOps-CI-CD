@@ -85,48 +85,6 @@ git push origin main
 6. Container started and application deployed
 7. Users access updated application
 
-## Application Features
-
-- Flask web application with responsive UI
-- Health check endpoint: `/health`
-- API endpoint: `/api/version`
-- Container ID and timestamp display
-- Docker-based deployment ready
-
-## Deployment Options
-
-### Local Testing
-```bash
-bash scripts/build.sh
-docker run -p 5000:5000 docker-cicd-app:latest
-```
-
-### Azure Manual Deployment
-```bash
-bash scripts/deploy.sh rg-docker-cicd acrdockercicd docker-cicd-app
-```
-
-### GitHub Actions Automatic
-Push code to main branch → Pipeline runs automatically
-
-## Verification
-
-```bash
-# Test deployment
-bash scripts/validation.sh rg-docker-cicd docker-cicd-app acrdockercicd
-
-# View application logs
-az webapp log tail -g rg-docker-cicd -n docker-cicd-app
-
-```
-
-
-
-## Documentation
-
-- **pipeline-flow.md** - Complete CI/CD workflow explanation
-- **deployment-notes.md** - Step-by-step deployment guide
-- **scripts/*.sh** - Automated deployment scripts
 
 ## Key Features
 
@@ -138,4 +96,3 @@ az webapp log tail -g rg-docker-cicd -n docker-cicd-app
 ✅ Container logging  
 ✅ Auto-deployment  
 ✅ Scalable infrastructure  
-
